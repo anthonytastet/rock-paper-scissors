@@ -10,12 +10,11 @@ function getUserChoice(){
         if(userInput === "ROCK" || userInput === "PAPER" || userInput === "SCISSORS"){
 
             userChoice = userInput
-            console.log(`USER CHOSE ${userChoice}`)
+            console.log(`>USER CHOSE ${userChoice}`)
             return userChoice
         }
     }
 }
-// getUserChoice()
 
 function getComputerChoice(){
 
@@ -38,10 +37,9 @@ function getComputerChoice(){
     }
 
     // console.log(computerInput)
-    console.log(`COMPUTER CHOSE ${computerChoice}`)
+    console.log(`>COMPUTER CHOSE ${computerChoice}`)
     return computerChoice
 }
-// getComputerChoice()
 
 function compareChoices(playerSelection, computerSelection){
 
@@ -51,39 +49,39 @@ function compareChoices(playerSelection, computerSelection){
         case "ROCK":
             switch(computerSelection){
                 case "ROCK":
-                    message = "That's a TIE. Try again!"
+                    message = "That's a TIE. Try again!\n"
                     break
                 case "PAPER":
-                    message = "You LOOSE. PAPER beats ROCK"
+                    message = "You LOOSE. PAPER beats ROCK!\n"
                     break
                 case "SCISSORS":
-                    message = "You WIN. ROCK beats SCISSORS"
+                    message = "You WIN. ROCK beats SCISSORS!\n"
                     break
             }
             break
         case "PAPER":
             switch(computerSelection){
                 case "ROCK":
-                    message = "You WIN. PAPER beats ROCK"
+                    message = "You WIN. PAPER beats ROCK!\n"
                     break
                 case "PAPER":
-                    message = "That's a TIE. Try again!"
+                    message = "That's a TIE. Try again!\n"
                     break
                 case "SCISSORS":
-                    message = "You LOOSE. SCISSORS beats PAPER!"
+                    message = "You LOOSE. SCISSORS beats PAPER!\n"
                     break
             }
             break
         case "SCISSORS":
             switch(computerSelection){
                 case "ROCK":
-                    message = "You LOOSE. ROCK beats SCISSORS!"
+                    message = "You LOOSE. ROCK beats SCISSORS!\n"
                     break
                 case "PAPER":
-                    message = "You WIN. SCISSORS beats PAPER"
+                    message = "You WIN. SCISSORS beats PAPER!\n"
                     break
                 case "SCISSORS":
-                    message = "That's a TIE. Try again!"
+                    message = "That's a TIE. Try again!\n"
                     break
             }
             break
@@ -91,4 +89,51 @@ function compareChoices(playerSelection, computerSelection){
     console.log(message)
     return message
 }
-compareChoices(getUserChoice(),getComputerChoice())
+
+function playRound(){
+
+    let roundScore = 0
+    let message = compareChoices(getUserChoice(), getComputerChoice())
+
+    switch(message){
+        case "That's a TIE. Try again!\n":
+            playRound()
+            break
+        case "You WIN. ROCK beats SCISSORS!\n":
+            roundScore += 1
+            break
+        case "You WIN. PAPER beats ROCK!\n":
+            roundScore += 1
+            break
+        case "You WIN. SCISSORS beats PAPER!\n":
+            roundScore += 1
+            break
+        case "You LOOSE. PAPER beats ROCK!\n":
+            roundScore = 0
+            break
+        case "You LOOSE. SCISSORS beats PAPER!\n":
+            roundScore = 0
+            break
+        case "You LOOSE. ROCK beats SCISSORS!\n":
+            roundScore = 0
+            break
+    }
+
+    return roundScore
+}
+
+function game(){
+
+    let gameScore = 0
+
+    for(i=1; i<=3; i++){
+
+        console.log(`\nROUND ${i}, start!`)
+
+        roundScore = playRound()
+        gameScore += roundScore
+    }
+
+    console.log(`SCORE: ${gameScore}`)
+}
+game()
