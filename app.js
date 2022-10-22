@@ -1,4 +1,4 @@
-function getUserChoice (){
+function getUserChoice(){
     let userChoice = ""
     let userInput = ""
 
@@ -14,4 +14,30 @@ function getUserChoice (){
         }
     }
 }
-getUserChoice()
+// getUserChoice()
+
+function getComputerChoice(){
+    let computerChoice = ""
+    let computerInput = 0
+
+    computerInput = Math.random()
+    
+    switch(true){
+        case (computerInput <= (1/3)):
+            computerChoice = "ROCK"
+            break;
+
+        case (computerInput> (1/3) && computerInput <= (2/3)):
+            computerChoice = "PAPER"
+            break;
+        
+        case (computerInput > (2/3)):
+            computerChoice = "SCISSORS"
+            break;
+    }
+
+
+    console.log(computerInput)
+    console.log(computerChoice)
+}
+getComputerChoice()
