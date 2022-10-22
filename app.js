@@ -1,4 +1,5 @@
 function getUserChoice(){
+
     let userChoice = ""
     let userInput = ""
 
@@ -9,7 +10,7 @@ function getUserChoice(){
         if(userInput === "ROCK" || userInput === "PAPER" || userInput === "SCISSORS"){
 
             userChoice = userInput
-            console.log(userChoice)
+            console.log(`USER CHOSE ${userChoice}`)
             return userChoice
         }
     }
@@ -17,6 +18,7 @@ function getUserChoice(){
 // getUserChoice()
 
 function getComputerChoice(){
+
     let computerChoice = ""
     let computerInput = 0
 
@@ -25,19 +27,61 @@ function getComputerChoice(){
     switch(true){
         case (computerInput <= (1/3)):
             computerChoice = "ROCK"
-            break;
-
+            break
         case (computerInput> (1/3) && computerInput <= (2/3)):
             computerChoice = "PAPER"
-            break;
+            break
         
         case (computerInput > (2/3)):
             computerChoice = "SCISSORS"
-            break;
+            break
     }
 
-
-    console.log(computerInput)
-    console.log(computerChoice)
+    // console.log(computerInput)
+    console.log(`COMPUTER CHOSE ${computerChoice}`)
+    return computerChoice
 }
-getComputerChoice()
+// getComputerChoice()
+
+function compareChoices(playerSelection, computerSelection){
+
+    switch(playerSelection){
+        case "ROCK":
+            switch(computerSelection){
+                case "ROCK":
+                    console.log("EGALITE")
+                    break
+                case "PAPER":
+                    console.log("PERDU")
+                    break
+                case "SCISSORS":
+                    console.log("GAGNE")
+            }
+            break
+        case "PAPER":
+            switch(computerSelection){
+                case "ROCK":
+                    console.log("GAGNE")
+                    break
+                case "PAPER":
+                    console.log("EGALITE")
+                    break
+                case "SCISSORS":
+                    console.log("PERDU")
+            }
+            break
+        case "SCISSORS":
+            switch(computerSelection){
+                case "ROCK":
+                    console.log("PERDU")
+                    break
+                case "PAPER":
+                    console.log("GAGNE")
+                    break
+                case "SCISSORS":
+                    console.log("EGALITE")
+            }
+            break
+    }
+}
+compareChoices(getUserChoice(),getComputerChoice())
