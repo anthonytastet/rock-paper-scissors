@@ -45,43 +45,50 @@ function getComputerChoice(){
 
 function compareChoices(playerSelection, computerSelection){
 
+    let message = ""
+
     switch(playerSelection){
         case "ROCK":
             switch(computerSelection){
                 case "ROCK":
-                    console.log("EGALITE")
+                    message = "That's a TIE. Try again!"
                     break
                 case "PAPER":
-                    console.log("PERDU")
+                    message = "You LOOSE. PAPER beats ROCK"
                     break
                 case "SCISSORS":
-                    console.log("GAGNE")
+                    message = "You WIN. ROCK beats SCISSORS"
+                    break
             }
             break
         case "PAPER":
             switch(computerSelection){
                 case "ROCK":
-                    console.log("GAGNE")
+                    message = "You WIN. PAPER beats ROCK"
                     break
                 case "PAPER":
-                    console.log("EGALITE")
+                    message = "That's a TIE. Try again!"
                     break
                 case "SCISSORS":
-                    console.log("PERDU")
+                    message = "You LOOSE. SCISSORS beats PAPER!"
+                    break
             }
             break
         case "SCISSORS":
             switch(computerSelection){
                 case "ROCK":
-                    console.log("PERDU")
+                    message = "You LOOSE. ROCK beats SCISSORS!"
                     break
                 case "PAPER":
-                    console.log("GAGNE")
+                    message = "You WIN. SCISSORS beats PAPER"
                     break
                 case "SCISSORS":
-                    console.log("EGALITE")
+                    message = "That's a TIE. Try again!"
+                    break
             }
             break
     }
+    console.log(message)
+    return message
 }
 compareChoices(getUserChoice(),getComputerChoice())
