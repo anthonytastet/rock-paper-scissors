@@ -97,7 +97,7 @@ function playRound(){
 
     switch(message){
         case "That's a TIE. Try again!\n":
-            playRound()
+            roundScore = playRound()
             break
         case "You WIN. ROCK beats SCISSORS!\n":
             roundScore += 1
@@ -124,9 +124,10 @@ function playRound(){
 
 function game(){
 
+    let roundsNumber = 3
     let gameScore = 0
 
-    for(i=1; i<=3; i++){
+    for(i = 1; i <= roundsNumber; i++){
 
         console.log(`\nROUND ${i}, start!`)
 
@@ -134,6 +135,6 @@ function game(){
         gameScore += roundScore
     }
 
-    console.log(`SCORE: ${gameScore}`)
+    console.log(`\nSCORE: ${gameScore} / ${roundsNumber}`)
 }
 game()
